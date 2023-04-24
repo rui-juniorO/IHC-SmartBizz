@@ -1,3 +1,7 @@
+#  Rafael : Para trabalharmos com React Router devemos instalar localmente os modulos do mesmo (já que os "node_mudoles" estão registrados no .gitignore)
+## $ npm install react-router-dom
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

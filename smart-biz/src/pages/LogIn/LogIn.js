@@ -1,5 +1,15 @@
 import "./LogIn.css"
 import logo from '../assets/logo.png'
+import { Outlet, Link } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([{
+  path: "./page"}
+  
+])
 function LogIn_form() {
     let  email
   return (
@@ -16,8 +26,8 @@ function LogIn_form() {
         <input className="input-type2" placeholder="password" 
         type="password" value={email} required></input>
         <br></br>
-        <button className="btn">submit</button>
-      
+        <Link to="./page.js"><button className="btn">submit</button></Link>
+        <Link to="./page.js">Page</Link>
       </form>
     </div>
   );
