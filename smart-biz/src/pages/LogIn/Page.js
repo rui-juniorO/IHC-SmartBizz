@@ -1,3 +1,4 @@
+//Para propósitos de testes
 import React from "react";
 function Page() {
 return (

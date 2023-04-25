@@ -1,22 +1,22 @@
 import './App.css';
+import LogIn_form from  './LogIn/LogIn'
+import Page from './LogIn/Page';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom';
 
+//Acho melhor definir todas as rotas aqui
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    //All routes
+    <Router>
+      <Routes>
+        <Route path='/' element={<LogIn_form/>}></Route>
+        <Route path='/page' element={<Page/>}></Route>
+      </Routes>
+    </Router>
   );
 }
 
