@@ -1,16 +1,21 @@
-// LIBRARY
-/*eslint-disable no-unused-vars*/
-import React from 'react';
-/*eslint-enable no-unused-vars*/
-import {Route, IndexRoute} from 'react-router';
+//Vamos definir as rotas aqui exportar para o App.js
+import LogIn_form from './LogIn/LogIn';
+import Page from './LogIn/Page'
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route
+  } from 'react-router-dom';
 
-//Rotas para as página
-import LogIn_form from './pages/LogIn/LogIn';
-import Page from './pages/LogIn/page';
-
-export default (
-    <Route component={LogIn_form} path='/'>
-        <IndexRoute component={LogIn_form}></IndexRoute>
-        <Route component={Page} path='page'></Route>
-    </Route>
+export default function Routing(){ 
+    return (
+    //All the current routes
+    <Router>
+      <Routes>
+        <Route path='/' element={<LogIn_form/>}></Route>
+        <Route path='/page' element={<Page/>}></Route>
+        <Route path='/sus' element='Sussy link : https://www.youtube.com/watch?v=cF5tQhVZi84'></Route>
+      </Routes>
+    </Router>
 );
+}
