@@ -1,18 +1,14 @@
 import "./LogIn.css"
 import logo from '../assets/logo.png'
-import { Outlet, Link, NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-
+import {  Link } from "react-router-dom";
 
 export default function LogIn_form() {
     let  email;
-    const navigate =  useNavigate();
-    const handleClick = () => {
-      navigate()
-    }
   return (
     <div className="form-space">
       <img src={logo}></img>
+      <br></br>
+      <br></br>
       <br></br>
       <br></br>
 
@@ -24,7 +20,7 @@ export default function LogIn_form() {
         <input className="input-type2" placeholder="password" 
         type="password" value={email} required></input>
         <br></br>
-        <Link to="/Page"><button className="btn">Submit</button></Link>
+        <Link to="/Page"><button className="btn">Log In</button></Link>
       </form>
     </div>
   );

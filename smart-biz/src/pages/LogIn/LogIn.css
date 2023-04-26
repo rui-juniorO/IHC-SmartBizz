@@ -1,5 +1,5 @@
 .form-space {
-    background-color: #8491aa;
+    background-color: #6cdb9a;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@
     font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: 2px solid #F0FFF3;
+  border-bottom: 2px solid #e8f3ea;
   outline: 0;
   font-size: 1.3rem;
   color: f0fff3;
@@ -42,7 +42,7 @@
   display: block;
   transition: 0.2s;
   font-size: 1rem;
-  color: 9b9b9b;
+  color: #fdfdfd;
 }
 
 .btn{
