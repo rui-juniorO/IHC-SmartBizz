@@ -1,0 +1,84 @@
+.c {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .a {
+    color: white;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  .n {
+    color: #008015;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  .clear {
+    background-color: rgba(255, 255, 255, 0.001);
+    border: none;
+  }
+  
+  .text {
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 2px 2px 4px #000000;
+  }
+  
+  .type {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+  }
+  
+  .pic {
+    border: solid;
+    border-color: grey;
+    border-radius: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 200px;
+  }
+  
+  .sp {
+    height: 1rem;
+  }
+  
+  .hcard {
+    max-width: 80%;
+    max-height: 100%;
+    align-content: right;
+    right: 0;
+    position: flex;
+    background-color: rgba(255, 255, 255, 0.001);
+    border: none;
+  
+    overflow: hidden;
+  }
+
+  
+.img-1 {
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+
+  
