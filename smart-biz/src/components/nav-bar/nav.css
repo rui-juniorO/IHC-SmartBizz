@@ -1,0 +1,55 @@
+.home {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(4, 133, 0);
+    overflow-x: hidden;
+  
+    transition: 0.5s;
+    color: white;
+    box-shadow: 2px 3px 5px rgb(4, 133, 0);
+  }
+  
+  .space {
+    height: 10rem;
+  }
+  
+  .spaces {
+    height: 10rem;
+  }
+  
+  .sig {
+    margin-top: 10px;
+    height: 15rem;
+    transform: skewY(-20deg);
+  }
+  
+  .card {
+    border: none;
+    width: 100%;
+  }
+  
+  .link {
+    color: black;
+    font-size: large;
+    font-weight: bold;
+    margin: 35px;
+  }
+
+.list-group-item {
+    margin-bottom: 20px;
+  }
+  
+  .link:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .li {
+    border: none;
+  }
+  
