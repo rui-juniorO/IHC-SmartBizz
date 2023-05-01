@@ -2,7 +2,7 @@ import './main.css';
 import { Card } from 'react-bootstrap';
 
 
-function Main() {
+export default function Main() {
     return (
         <div align='right' className='container'>
             <div className='c'>
@@ -17,4 +17,4 @@ function Main() {
     );
   }
   
-  export default Main;
+  //export default Main;

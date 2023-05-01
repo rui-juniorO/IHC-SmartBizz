@@ -20,7 +20,7 @@ export default function LogIn_form() {
         <input className="input-type2" placeholder="password" 
         type="password" value={email} required></input>
         <br></br>
-        <Link to="/Page"><button className="btn">Log In</button></Link>
+        <Link to="/main"><button className="btn">Log In</button></Link>
       </form>
     </div>
   );
