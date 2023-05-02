@@ -1,0 +1,13 @@
+.homeTop {
+    height: 5%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(4, 133, 0, 0.587);
+    overflow-x: hidden;
+  
+    transition: 0.5s;
+    color: white;
+}
