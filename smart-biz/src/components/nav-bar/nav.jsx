@@ -25,7 +25,7 @@ class SideNav extends Component {
       <Navbar className='home'>
         <Card className='card'>
           <Card.Img
-            src={require('./../../assets/signature.png')}
+            src={require('./../../pages/assets/signature.png')}
             variant='top'
             className='sig'
           />
