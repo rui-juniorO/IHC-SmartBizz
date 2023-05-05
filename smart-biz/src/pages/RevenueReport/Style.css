@@ -1,0 +1,5 @@
+.dateLabelGrid {
+    display: grid;
+    grid-template-columns: 40px 40px; column-gap: 30px;
+    grid-template-rows: 60px;
+}

@@ -1,0 +1,75 @@
+.container {
+    display: grid;
+    padding: 15px;
+    grid-template-rows: 200px 100px;
+    background-color: #FFFFFF;
+
+}
+
+.msgbox{
+    display: flex;
+    background-color: #414241;
+    border-radius: 15px; margin:10px;
+    align-items: flex-start; 
+    
+    
+}
+
+.msgbox p{
+    align-self: center;
+    color: #FFFFFF;
+    padding-left: 50px;
+    padding-right: 20px;
+    
+}
+
+.topGrid {
+    background-color: #08af08;
+    height: 240px;
+    align-items: center;
+    display: grid;
+    padding-left: 100px;
+    grid-template-columns: 100px 200px 200px;
+}
+
+
+.bottomGrid{
+    background-color: #FFFFFF;
+    display: grid;
+    padding-left: 150px;
+    padding-top: 100px;
+    row-gap: 100px; column-gap:250px;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 600px ;
+}
+
+.datePickerGrid {
+    display: grid;
+    column-gap: 70px;
+    row-gap: 100px;
+    grid-template-columns: 200px  200px;
+    grid-template-rows: 20px 60px;
+
+}
+
+.btnGrid {
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: 100px 100px;
+}
+
+.btn{
+    color:#fff;
+	background-color:#08af08;
+	outline: none;
+    border: 0;
+    color: #fff;
+	padding:10px 20px;
+	text-transform:uppercase;
+	border-radius:2px;
+	cursor:pointer;
+	position:relative;
+
+    height: 40px;
+}
+
