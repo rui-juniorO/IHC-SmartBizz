@@ -1,11 +1,3 @@
-.container {
-    display: grid;
-    padding: 15px;
-    grid-template-rows: 200px 100px;
-    background-color: #FFFFFF;
-
-}
-
 .msgbox{
     display: flex;
     background-color: #414241;
@@ -14,6 +6,16 @@
     
     
 }
+
+.exportOptions {
+    padding-top: 200px;
+    display: flexbox;
+    width: max-content;
+    float: right;
+    align-items: end;
+    justify-content: end;
+}
+
 
 .msgbox p{
     align-self: center;
@@ -29,23 +31,25 @@
     align-items: center;
     display: grid;
     padding-left: 100px;
-    grid-template-columns: 100px 200px 200px;
+    grid-template-columns: 100px 100px;
 }
+
 
 
 .bottomGrid{
     background-color: #FFFFFF;
     display: grid;
-    padding-left: 150px;
+    padding-left: 700px;
     padding-top: 100px;
-    row-gap: 100px; column-gap:250px;
-    grid-template-columns: 50% 50%;
+    row-gap: 100px; column-gap:150px;
+    grid-template-columns: 400px;
     grid-template-rows: 600px ;
 }
 
 .datePickerGrid {
     display: grid;
     column-gap: 70px;
+    padding-left: 70px;
     row-gap: 100px;
     grid-template-columns: 200px  200px;
     grid-template-rows: 20px 60px;
@@ -55,6 +59,8 @@
 .btnGrid {
     display: grid;
     column-gap: 10px;
+    padding-left: 100px;
+
     grid-template-columns: 100px 100px;
 }
 

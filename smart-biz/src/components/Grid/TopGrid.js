@@ -1,7 +1,10 @@
 import './Grid.css'
 function TopGrid(){
     return (
-        <div className='topGrid'></div>
+        
+        <div className='topGrid'>
+            
+        </div>
     );
 }
 

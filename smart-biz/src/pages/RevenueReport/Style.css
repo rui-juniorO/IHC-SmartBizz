@@ -1,3 +1,8 @@
+body {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
 .dateLabelGrid {
     display: grid;
     grid-template-columns: 40px 40px; column-gap: 30px;

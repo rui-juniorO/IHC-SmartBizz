@@ -1,40 +1,105 @@
+import { useState } from 'react';
 import BottomGrid from '../../components/Grid/BottomGrid';
 import TopGrid from '../../components/Grid/TopGrid';
 import TopNav from '../../components/top-nav/nav'
+import Report from '../../components/Report/Report'
 import '../../components/Grid/Grid.css'
 import './Style.css'
+
 function RevenuePage() {
+
+    const [enableReport, setenableReport] = useState(false);
+    const [dateMsg, setdateMsg] = useState(true);
+    const [generateAction, setGenerateAction] = useState(false);
+    
+    //const[endRef, setEndRef] = useState("")
+    //const[startRef, setStartRef] = useState("")
 
     let startingDate = "", endingDate = "";
 
+    const checkDates = () => {
+        if(startingDate != "" && endingDate != "")
+        {
+            setenableReport(true);
+            setdateMsg(false);
+        }
+        else
+        {
+            setenableReport(false);
+            setdateMsg(true);
+
+        }
+        //console.log(enableReport);
+    }
     const setStartingDate = (date) => {
         startingDate = date;
-        console.log(startingDate);
+        console.log("startingDate : ", startingDate, " endingDate : ", endingDate)
+        checkDates();
+
     };
 
     const setEndingDate = (date) => {
         endingDate = date;
-        console.log(endingDate);
+        console.log("startingDate : ", startingDate, " endingDate : ", endingDate)
+        checkDates();
 
     }
+    
+    const generateReport = () => {
+        setGenerateAction(true);
+        console.log("startingDate : ", startingDate, " endingDate : ", endingDate)
+    }
+
+        
+    const handleGenerationReport = () => {
+        if(generateAction == true){
+        //console.log("startingDate : ", startingDate, " endingDate : ", endingDate)
+            
+            return (
+                <div>
+                    
+                    <Report ></Report> 
+                </div>
+                )
+        }
+        else {
+            return null;
+        }
+    }
+
+    
+   
+
     return   (
+
             <div> 
                 <TopNav></TopNav> 
                 <TopGrid></TopGrid>
-                <div className='msgbox'>
-                    <p>Select a beggning and ending date 
-                    to generate the report</p>
-                </div>
-
-
-                <div className='dateLabelGrid'>
-                </div>
-
+                {
+                    dateMsg ? 
+                    <div className='msgbox'>
+                        <p>Select a beggining and ending date 
+                        to generate the report
+                        </p>
+                    </div>
+                    : null
+                }
+                
+                
 
                 <BottomGrid 
                 EndingDate={setEndingDate}
                 StartingDate={setStartingDate}
+                generationTrigger={generateReport}
                 ></BottomGrid>
+
+               
+                {
+                    generateAction ?
+                    <Report ></Report> 
+                    : null
+                }
+
             </div>
             );
 };
