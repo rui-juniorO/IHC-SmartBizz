@@ -43,6 +43,20 @@ function BottomGrid(props) {
         props.EndingDate(date);
     }
 
+    const startDateMsg = () => {
+        if(startDate != ""){
+            return "From "+ startDate;
+        }
+        else return null;
+    }
+
+    const endDateMsg = () => {
+        if(endDate != ""){
+            return " to "+ endDate;
+        }
+        else return null;
+    }
+
 
     return (
             
@@ -50,8 +64,8 @@ function BottomGrid(props) {
                 
                 <div>
                     <div className='datePickerGrid'>
-                        <p id='startDate'>{startDate}</p>
-                        <p id='endDate'>{endDate}</p>
+                        <p id='startDate'>{startDateMsg()}</p>
+                        <p id='endDate'>{endDateMsg()}</p>
 
                         <input className='datePicker' type='date' 
                         id='starting'  onChange={handleStartingDate}></input>

@@ -1,3 +1,5 @@
+
+
 .msgbox{
     display: flex;
     background-color: #414241;
@@ -67,6 +69,9 @@
 .btn{
     color:#fff;
 	background-color:#08af08;
+    font-family: "Roboto Mono",monospace;
+
+    display: flex; justify-content: center;
 	outline: none;
     border: 0;
     color: #fff;
@@ -75,7 +80,14 @@
 	border-radius:2px;
 	cursor:pointer;
 	position:relative;
+    align-items: center;
 
     height: 40px;
+}
+
+.btn:hover{
+    transform: scaleX(1.2);
+    transform: scaleY(1.2);
+    transition: 0.09s;
 }
 

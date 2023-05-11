@@ -1,0 +1,73 @@
+{
+    "funcionarios": [
+      {
+        "Gross Salary": 2500,
+        "Liquid Salary": 2000,
+        "Contract Date": "01-05-2022",
+        "Income Taxes Deduciton": 20,
+        "Social Security": 11,
+        "Regular Hours of work": 160,
+        "Extra Hours of wor": 10,
+        "departamento": "Sales"
+      },
+      {
+        "Gross Salary": 3000,
+        "Liquid Salary": 2400,
+        "Contract Date": "15-07-2021",
+        "Income Taxes Deduciton": 18,
+        "Social Security": 10,
+        "Regular Hours of work": 170,
+        "Extra Hours of wor": 15,
+        "departamento": "IT"
+      },
+      {
+        "Gross Salary": 3500,
+        "Liquid Salary": 2800,
+        "Contract Date": "03-02-2023",
+        "Income Taxes Deduciton": 22,
+        "Social Security": 12,
+        "Regular Hours of work": 180,
+        "Extra Hours of wor": 20,
+        "departamento": "Marketing"
+      },
+      {
+        "Gross Salary": 2800,
+        "Liquid Salary": 2240,
+        "Contract Date": "10-09-2022",
+        "Income Taxes Deduciton": 19,
+        "Social Security": 11,
+        "Regular Hours of work": 155,
+        "Extra Hours of wor": 5,
+        "departamento": "Human Resources"
+      },
+      {
+        "Gross Salary": 3200,
+        "Liquid Salary": 2560,
+        "Contract Date": "20-03-2021",
+        "Income Taxes Deduciton": 21,
+        "Social Security": 12,
+        "Regular Hours of work": 168,
+        "Extra Hours of wor": 12,
+        "departamento": "Logistics"
+      },
+      {
+        "Gross Salary": 2700,
+        "Liquid Salary": 2160,
+        "Contract Date": "08-11-2022",
+        "Income Taxes Deduciton": 18,
+        "Social Security": 11,
+        "Regular Hours of work": 163,
+        "Extra Hours of wor": 8,
+        "departamento": "IT"
+      },
+      {
+        "Gross Salary": 2900,
+        "Liquid Salary": 2320,
+        "Contract Date": "05-04-2023",
+        "Income Taxes Deduciton": 20,
+        "Social Security": 12,
+        "Regular Hours of work": 175,
+        "Extra Hours of wor": 10,
+        "departamento": "Sales"
+      }]
+}

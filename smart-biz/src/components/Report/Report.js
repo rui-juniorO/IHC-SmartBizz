@@ -1,6 +1,7 @@
 import './Style.css'
 import './Table.scss'
-function Report(){
+import React from 'react';
+const Report = React.forwardRef((props, ref) => {
 
 
     const data = [
@@ -53,7 +54,7 @@ function Report(){
     }
 
     return (
-        <div className='reportBody'>
+        <div className='reportBody' ref={ref}>
              
             <div className='reportInfoBody'>
                 <h4>Total Revenue : {sumRevenue()} $<p>  </p>  
@@ -66,7 +67,7 @@ function Report(){
            
             
             <table class="responstable">
-                <thead>
+                <thead style={{paddingBottom: '100px'}}>
                     <tr>
                         <th>Product</th>
                         <th>Invoicing</th>
@@ -101,7 +102,7 @@ function Report(){
 
         </div>
     );
-}
+});
 
 
 export default Report;

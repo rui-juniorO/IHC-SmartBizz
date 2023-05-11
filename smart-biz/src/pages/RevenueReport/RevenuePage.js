@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import BottomGrid from '../../components/Grid/BottomGrid';
 import TopGrid from '../../components/Grid/TopGrid';
 import TopNav from '../../components/top-nav/nav'
@@ -11,6 +11,8 @@ function RevenuePage() {
     const [enableReport, setenableReport] = useState(false);
     const [dateMsg, setdateMsg] = useState(true);
     const [generateAction, setGenerateAction] = useState(false);
+
+    const reportRef = useRef(null);
     
     //const[endRef, setEndRef] = useState("")
     //const[startRef, setStartRef] = useState("")
@@ -47,28 +49,19 @@ function RevenuePage() {
     
     const generateReport = () => {
         setGenerateAction(true);
-        console.log("startingDate : ", startingDate, " endingDate : ", endingDate)
+        if (reportRef.current) {
+            //reportRef.current.focus();
+            reportRef.current.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "start"
+            });
+
+          }        
+          //console.log("startingDate : ", startingDate, " endingDate : ", endingDate)
     }
 
         
-    const handleGenerationReport = () => {
-        if(generateAction == true){
-        //console.log("startingDate : ", startingDate, " endingDate : ", endingDate)
-            
-            return (
-                <div>
-                    
-                    <Report ></Report> 
-                </div>
-                )
-        }
-        else {
-            return null;
-        }
-    }
-
-    
-   
 
     return   (
 
@@ -85,8 +78,6 @@ function RevenuePage() {
                     : null
                 }
                 
-                
-
                 <BottomGrid 
                 EndingDate={setEndingDate}
                 StartingDate={setStartingDate}
@@ -96,7 +87,8 @@ function RevenuePage() {
                
                 {
                     generateAction ?
-                    <Report ></Report> 
+                    <div ref={reportRef}><Report ></Report> </div>
+                    
                     : null
                 }
 
