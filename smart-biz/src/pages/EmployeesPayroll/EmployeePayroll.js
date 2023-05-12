@@ -1,11 +1,15 @@
 import TopNav from '../../components/top-nav/nav'
 import Selector from './Selector'
-import employees from './Emps.json'
+import ExportOpts from '../../components/Exportation/ExportOpts'
 import './Table.scss'
-//import Dropdown from 'react-bootstrap/Dropdown';
-import { useState } from 'react'
 import './Style.css'
+import SortSelector from './SortSelector'
+import employees from './Emps.json'
+import { useState } from 'react'
+
 const EmployeePayroll = () => {
+
+    let emps = employees.employees;
 
     //hooks para colunas opcionais
     const [contractDate, setContractDate] = useState(false);
@@ -18,177 +22,122 @@ const EmployeePayroll = () => {
 
     const [selectedDept, setDept] = useState("all");
 
-    const states = [
-        "contractDate", "incomeTaxes", "socialSecurity", 
-         "regularHours", "extraHours"
-    ]
+    const [sortOpt, setSort] =  useState("Liquid Salary");
 
-    const SetStates = [
-        setContractDate, setIncomeTaxes, setSocialSecurity, 
-        setRegularHours, setExtraHours
-    ]
-
-
-    /*
-    useEffect(() => {
-            // Iterar sobre os estados e armazenar no localStorage se o valor for verdadeiro
-            Object.entries(states).forEach(([key, value]) => {
-            if (value === true) {
-                localStorage.setItem(key, value);
-            }
-            });
-        }, [states]);
-    */
-    
-    const checkEmpDept = (emp) => {
-        //Default : todos os departamentos
-        if(selectedDept === null || selectedDept === "all"){
-            return (
-                <tr>
-                    <td>{emp['ID']}</td>
-                    <td>{emp['Name']}</td>
-                    <td>{emp['Department']}</td>
-                    <td>{emp['Gross Salary']}</td>
-                    <td>{emp['Liquid Salary']}</td>
-                    { contractDate && <td>{emp['Contract Date']}</td>}
-                    { incomeTaxes && <td>{emp['Income Taxes Deduciton']}</td>}
-                    { socialSecurity && <td>{emp['Social Security']}</td>}
-                    { regularHours&& <td>{emp['Regular Hours of work']}</td>}
-                    { extraHours&& <td>{emp['Extra Hours of work']}</td>}
-                                
-                </tr>
-            );
-        }
-        //O Departamento selecionado no select
-        else if(emp['Department'] == selectedDept){
-            return (
-                <tr>
-                    <td>{emp['ID']}</td>
-                    <td>{emp['Name']}</td>
-                    <td>{emp['Department']}</td>
-                    <td>{emp['Gross Salary']}</td>
-                    <td>{emp['Liquid Salary']}</td>
-                    { contractDate && <td>{emp['Contract Date']}</td>}
-                    { incomeTaxes && <td>{emp['Income Taxes Deduciton']}</td>}
-                    { socialSecurity && <td>{emp['Social Security']}</td>}
-                    { regularHours&& <td>{emp['Regular Hours of work']}</td>}
-                    { extraHours&& <td>{emp['Extra Hours of work']}</td>}
-                                
-                </tr>
-            );
-        }
-        else {return null;}
-    }
-    
-    const storeState = (key ,state) => {
-        localStorage.setItem(key, state);
+    //Sort methods
+    const sortByGs = () => {
+        emps.sort(function(a,b){
+            return b['Gross Salary'] - a['Gross Salary'];
+        })
     }
 
+    const sortByLs = () => {
+        emps.sort(function(a,b){
+            return b['Liquid Salary'] - a['Liquid Salary'];
+        })
+    }
 
+    const sortByTaxes = () => {
+        emps.sort(function(a,b){
+            return b['Income Taxes Deduciton'] - a['Income Taxes Deduciton'];
+        })
+    }
 
+    const sortBySS = () => {
+        emps.sort(function(a,b){
+            return b['Social Security'] - a['Social Security'];
+        })
+    }
 
-    const tableTrigger = () => {
-        console.log("Dept : ", selectedDept);
-        if(tableGenerator === false){
-            console.log(tableGenerator)
-            setTable(true);
+    const sortByRhours = () => {
+        emps.sort(function(a,b){
+            return b['Regular Hours of work'] - a['Regular Hours of work'];
+        })
+    }
 
-        }
-        else{
-            //Recarrega a pagina (useState voltam ao state original)
-            window.location.reload();
-            // Código antes da recarga da página
+    const sortByEhours = () => {
+        emps.sort(function(a,b){
+            return b['Extra Hours of work'] - a['Extra Hours of work'];
+        })
+    }
 
-            setTimeout(() => {
-                // Código após a recarga da página
-                // Coloque aqui o código que você deseja que seja executado após a recarga
-            
-                let index; let statValue;
-                //Verificar cada estado no localStorage
-                for(index = 0; index < SetStates.length; index++){
+    const sortByCDate = () => {
+        emps.sort(function(a,b){
+            // Conversão das datas em objetos Date
+            var dateA = new Date(
+                parseInt(a['Contract Date'].split("-")[2]), // ano
+                parseInt(a['Contract Date'].split("-")[1]) - 1, // mês (0-11)
+                parseInt(a['Contract Date'].split("-")[0]) // dia
+            );
+            var dateB = new Date(
+                parseInt(b['Contract Date'].split("-")[2]), // ano
+                parseInt(b['Contract Date'].split("-")[1]) - 1, // mês (0-11)
+                parseInt(b['Contract Date'].split("-")[0]) // dia
+            );
 
-                    statValue = localStorage.getItem(states[index]);
-                    //Se antes do reload a opção havia sido selecionada
-                    //Mas a tabela ja havia sido criada, dar set no estado novamente
-                    if(statValue == true){
-                        console.log(states[index], statValue)
-                        SetStates[index](statValue);
-                    }
+            // Comparação das datas
+            return dateB - dateA;
+        })
+    }
 
-                }
+    const sortOps = [
+        ["Gross Salary", sortByGs],
+        ["Liquid Salary", sortByLs],
+        ["Income Taxes Deduciton", sortByTaxes],
+        ["Social Security", sortBySS],
+        ["Regular Hours of work",sortByRhours],
+        ["Extra Hours of work", sortByEhours],
+        ["Contract Date", sortByCDate]
+    ]
 
-                setTable(true);
-            }, 4000); // Tempo de espera em milissegundos (exemplo: 1 segundo)
-            
-            console.log(444)
-            
-            
-        }
-    };
-
-
-
+    
+    //Handlers for Table Collumns
     const handleContractDate = (event) => {
         if(tableGenerator === false){
             setContractDate(event.target.checked);
-            storeState("ContractDate",event.target.checked);
-        }
-        else
-        {
-            storeState("ContractDate",event.target.checked);
-
         }
     };
 
     const handleIncomeTaxes = (event) => {
         if(tableGenerator === false){
             setIncomeTaxes(event.target.checked);
-            storeState("IncomeTaxes",event.target.checked);
-
-        }
-        else
-        {
-            storeState("IncomeTaxes",event.target.checked);
-
         }
     };
 
     const handleSocialSecurity = (event) => {
         if(tableGenerator === false){
             setSocialSecurity(event.target.checked);
-            storeState("socialSecurity",event.target.checked);
-        }
-        else
-        {
-            storeState("socialSecurity",event.target.checked);
-
         }
     };
 
     const handleRegularHours = (event) => {
         if(tableGenerator === false){
             setRegularHours(event.target.checked);
-            storeState("regularHours",event.target.checked);
-        }
-        else
-        {
-            storeState("regularHours",event.target.checked);
-
         }
     };
 
     const handleExtraHours = (event) => {
         if(tableGenerator === false){
             setExtraHours(event.target.checked);
-            storeState("extraHours",event.target.checked);
-        }
-        else
-        {
-            storeState("extraHours",event.target.checked);
-
         }
     };
     
+    const tableTrigger = () => {
+            //console.log("Dept : ", selectedDept);
+            //console.log("Sort by : ", sortOpt);
+            for(let i = 0; i < sortOps.length; i ++){
+                if(sortOps[i][0] == sortOpt){
+                    sortOps[i][1]();
+                }
+            }
+
+            if(tableGenerator === false){
+                console.log(tableGenerator)
+                setTable(true);
+
+            }
+            
+    };
 
 
     return (
@@ -218,52 +167,52 @@ const EmployeePayroll = () => {
 
                         <tbody>
 
-                            {
-                                employees.employees.map((emp, idx) => {
-                                    {
-                                        if(selectedDept == null || selectedDept == "all"){
-                                            return (
-                                                <tr key={idx}>
-                                                     <td>{emp['ID']}</td>
-                                                    <td>{emp['Name']}</td>
-                                                    <td>{emp['Department']}</td>
-                                                    <td>{emp['Gross Salary']}</td>
-                                                    <td>{emp['Liquid Salary']}</td>
-                                                    { contractDate && <td>{emp['Contract Date']}</td>}
-                                                    { incomeTaxes && <td>{emp['Income Taxes Deduciton']}</td>}
-                                                    { socialSecurity && <td>{emp['Social Security']}</td>}
-                                                    { regularHours&& <td>{emp['Regular Hours of work']}</td>}
-                                                    { extraHours&& <td>{emp['Extra Hours of work']}</td>}
-                                                </tr>
+            {
+                emps.map((emp, idx) => {
+                    {
+                        if(selectedDept == null || selectedDept == "all"){
+                            return (
+                                <tr key={idx}>
+                                    <td>{emp['ID']}</td>
+                                    <td>{emp['Name']}</td>
+                                    <td>{emp['Department']}</td>
+                                    <td>{emp['Gross Salary']}</td>
+                                    <td>{emp['Liquid Salary']}</td>
+                                    { contractDate && <td>{emp['Contract Date']}</td>}
+                                    { incomeTaxes && <td>{emp['Income Taxes Deduciton']}</td>}
+                                    { socialSecurity && <td>{emp['Social Security']}</td>}
+                                    { regularHours&& <td>{emp['Regular Hours of work']}</td>}
+                                    { extraHours&& <td>{emp['Extra Hours of work']}</td>}
+                                </tr>
 
 
-                                            );
-                                        }
-                                        else if (emp['Department'] == selectedDept){
-                                            return (
-                                                <tr key={idx}>
-                                                     <td>{emp['ID']}</td>
-                                                    <td>{emp['Name']}</td>
-                                                    <td>{emp['Department']}</td>
-                                                    <td>{emp['Gross Salary']}</td>
-                                                    <td>{emp['Liquid Salary']}</td>
-                                                    { contractDate && <td>{emp['Contract Date']}</td>}
-                                                    { incomeTaxes && <td>{emp['Income Taxes Deduciton']}</td>}
-                                                    { socialSecurity && <td>{emp['Social Security']}</td>}
-                                                    { regularHours&& <td>{emp['Regular Hours of work']}</td>}
-                                                    { extraHours&& <td>{emp['Extra Hours of work']}</td>}
-                                                </tr>
+                                    );
+                        }
+                        else if (emp['Department'] == selectedDept){
+                            return (
+                                <tr key={idx}>
+                                    <td>{emp['ID']}</td>
+                                    <td>{emp['Name']}</td>
+                                    <td>{emp['Department']}</td>
+                                    <td>{emp['Gross Salary']} $</td>
+                                    <td>{emp['Liquid Salary']} $</td>
+                                    { contractDate && <td>{emp['Contract Date']}</td>}
+                                    { incomeTaxes && <td>{emp['Income Taxes Deduciton']} %</td>}
+                                    { socialSecurity && <td>{emp['Social Security']} $</td>}
+                                    { regularHours&& <td>{emp['Regular Hours of work']} hours</td>}
+                                    { extraHours&& <td>{emp['Extra Hours of work']} hours</td>}
+                                </tr>
 
 
-                                            );
-                                        }
-                                        else {return null;}
-                                    }
+                            );
+                        }
+                        else {return null;}
+                    }
                                    
-                                }               
-                                                    )
+                }               
+                                                )
                             
-                            }
+            }
                             
                         </tbody>
                     </table>
@@ -278,69 +227,77 @@ const EmployeePayroll = () => {
                 <div className='menuBox'>
 
                 
-                <h4>Collumns to be displayed : </h4>
-                <h6>(The payroll will be perfomed even if not select )</h6>
-                <br></br>
-                <br></br>
+                    <h4>Collumns to be displayed : </h4>
+                    <h6>(The payroll will be perfomed even if not select)</h6>
+                    <br></br>
+                    <br></br>
 
-                <label>
-                        
-                        <input type="checkbox"
-                        onChange={handleContractDate}></input>
-                        Contract Date
-                </label>
-                <br></br>
-                <br></br>
+                    <label>
+                            
+                            <input type="checkbox"
+                            onChange={handleContractDate}></input>
+                            Contract Date
+                    </label>
+                    <br></br>
+                    <br></br>
 
-                <label>
-                        
-                        <input type="checkbox"
-                        onChange={handleIncomeTaxes}></input>
-                        Income Taxes Deduciton
-                </label>
-                <br></br>
-                <br></br>
+                    <label>
+                            
+                            <input type="checkbox"
+                            onChange={handleIncomeTaxes}></input>
+                            Income Taxes Deduciton
+                    </label>
+                    <br></br>
+                    <br></br>
 
-                <label>
-                        
-                        <input type="checkbox"
-                        onChange={handleSocialSecurity}></input>
-                        Social Security
-                </label>
-                <br></br>
-                <br></br>
+                    <label>
+                            
+                            <input type="checkbox"
+                            onChange={handleSocialSecurity}></input>
+                            Social Security
+                    </label>
+                    <br></br>
+                    <br></br>
 
-                <label>
-                        
-                        <input type="checkbox"
-                        onChange={handleRegularHours}></input>
-                        Regular Hours of work
-                </label>
-                <br></br>
-                <br></br>
+                    <label>
+                            
+                            <input type="checkbox"
+                            onChange={handleRegularHours}></input>
+                            Regular Hours of work
+                    </label>
+                    <br></br>
+                    <br></br>
 
-                <label>
-                        
-                        <input type="checkbox"
-                        onChange={handleExtraHours}></input>
-                        Extra Hours of work
-                </label>
+                    <label>
+                            
+                            <input type="checkbox"
+                            onChange={handleExtraHours}></input>
+                            Extra Hours of work
+                    </label>
 
-                <br></br>
-                <br></br>
-                <h4>Department : </h4>
-                <h5>By default queries all departments</h5>
-                <br></br>
-                <br></br>
-                <Selector selection={setDept} opt={selectedDept}></Selector>
+                    <br></br>
+                    <br></br>
+                    <h4>Department : </h4>
+                    <h5>By default queries all departments</h5>
+                    <br></br>
+                    <br></br>
+                    <Selector selection={setDept} opt={selectedDept}></Selector>
 
-                <br></br>
-                <br></br>
+                    <br></br>
+                    <br></br>
 
-                <br></br>
-                <br></br>
-                <button onClick={tableTrigger}>Generate</button>
+                    <h4>Sort the list : </h4>
+                    <h5>By default sorts by the Liquid Salary</h5>
 
+                    <br></br>
+                    <br></br>
+                    <SortSelector selection={setSort} opt={sortOpt}></SortSelector>
+
+                    <br></br>
+                    <br></br>
+                    <button onClick={tableTrigger}>Generate</button>
+
+                    {tableGenerator && <ExportOpts></ExportOpts>}
                         
                 </div>
            

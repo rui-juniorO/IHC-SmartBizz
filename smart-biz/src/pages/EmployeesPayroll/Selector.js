@@ -14,8 +14,7 @@ const Selector = (props) => {
       ];
 
       const handleSelectChange = (selectedOption) => {
-        props.selection(selectedOption['value']); // Chama a função de seleção passada por props
-        //console.log("Dept : ", selectedOption['value'])
+        props.selection(selectedOption['value']); 
     };
 
 
