@@ -64,41 +64,43 @@ const Report = React.forwardRef((props, ref) => {
                 </h4>
             </div>
 
-           
+           <div className='tableBody'>
+                <table class="responstable">
+                                <thead style={{paddingBottom: '100px'}}>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Invoicing</th>
+                                        <th>Revenue</th>
+                                        <th>Total Of Sales</th>
+                                        <th>Taxes</th>
+                                        <th>Devolutions</th>
+                                    </tr>
+                                </thead>
+                                    
+
+                                    <tbody>
+                                        {
+
+                                        data.map(
+                                            item=>(
+                                                <tr key={item}>
+                                                    <td>{item.Product}</td>
+                                                    <td>{item.Invoicing} $</td>
+                                                    <td>{item.Revenue} $</td>
+                                                    <td>{item.TotalOfSales} units</td>
+                                                    <td>{item.Taxes} %</td>
+                                                    <td>{item.Devolutions} units</td>
+                                                </tr>
+                                            )
+                                        )
+
+                                        }
+                                    </tbody>
+                
+                            </table>
+           </div>
             
-            <table class="responstable">
-                <thead style={{paddingBottom: '100px'}}>
-                    <tr>
-                        <th>Product</th>
-                        <th>Invoicing</th>
-                        <th>Revenue</th>
-                        <th>Total Of Sales</th>
-                        <th>Taxes</th>
-                        <th>Devolutions</th>
-                    </tr>
-                </thead>
-                    
-
-                    <tbody>
-                        {
-
-                        data.map(
-                            item=>(
-                                <tr key={item}>
-                                    <td>{item.Product}</td>
-                                    <td>{item.Invoicing} $</td>
-                                    <td>{item.Revenue} $</td>
-                                    <td>{item.TotalOfSales} units</td>
-                                    <td>{item.Taxes} %</td>
-                                    <td>{item.Devolutions} units</td>
-                                </tr>
-                            )
-                        )
-
-                        }
-                    </tbody>
-  
-            </table>
+            
 
         </div>
     );

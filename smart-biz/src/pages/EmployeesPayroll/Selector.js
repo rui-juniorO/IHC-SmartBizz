@@ -13,13 +13,16 @@ const Selector = (props) => {
         { value: 'Directory', label: 'Directory' }
       ];
 
+      const selectedOption = options.find((option) => option.value === props.opt);
+
+
       const handleSelectChange = (selectedOption) => {
         props.selection(selectedOption['value']); 
     };
 
 
     return (<Select 
-        value={props.opt}
+        value={selectedOption}
         onChange={handleSelectChange}
         options={options}
         className={{

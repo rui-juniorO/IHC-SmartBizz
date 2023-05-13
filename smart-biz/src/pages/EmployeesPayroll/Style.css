@@ -3,15 +3,19 @@
 	margin: 0 auto;
 	display: flex;
 	flex-wrap: wrap;
-}
+	zoom: 0.8; /* Defina o valor do zoom desejado */
 
+}
+  
 main {
     margin-right: 200px; /* Define uma margem à direita para acomodar a sidebar */
-	background-color: #f1f1f1;
+	background-color: #FFFFFF;
 
 }
 
 aside {
+	font-family: system-ui, sans-serif;
+
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -42,4 +46,61 @@ aside {
 		height: auto;
 		padding: 20px;
 	}
+}
+
+button{
+    color:#fff;
+	background-color:#08af08;
+    font-family: "Roboto Mono",monospace;
+
+    display: flex; justify-content: center;
+	outline: none;
+    border: 0;
+    color: #fff;
+	padding:10px 20px;
+	text-transform:uppercase;
+	border-radius:2px;
+	cursor:pointer;
+	position:relative;
+    align-items: center;
+
+    height: 40px;
+}
+
+.deptGrid {
+	position: relative;
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: 100px 100px 100px 100px 100px 100px;
+	grid-template-rows: 80px;
+	background-color: #D7DBE1;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+
+	column-gap: 50px;
+}
+
+.tableSpot {
+	margin-bottom: 400px;
+}
+
+input[type="checkbox"] {
+	background-color: #fff;
+	margin: 0;
+	font: inherit;
+	color: currentColor;
+	width: 1.15em;
+	border: 0.15em solid currentColor;
+	border-radius: 0.15em;
+	transform: translateY(-0.075em);
+  }
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
 }

@@ -14,6 +14,8 @@ const SortSelector = (props) => {
 
       ];
 
+      const selectedOption = options.find((option) => option.value === props.opt);
+
       const handleSelectChange = (selectedOption) => {
         props.selection(selectedOption['value']); // Chama a função de seleção passada por props
         //console.log("Dept : ", selectedOption['value'])
@@ -21,7 +23,7 @@ const SortSelector = (props) => {
 
 
     return (<Select 
-        value={props.opt}
+        value={selectedOption}
         onChange={handleSelectChange}
         options={options}
         className={{

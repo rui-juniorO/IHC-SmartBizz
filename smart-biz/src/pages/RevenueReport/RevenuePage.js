@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import BottomGrid from '../../components/Grid/BottomGrid';
 import TopGrid from '../../components/Grid/TopGrid';
 import TopNav from '../../components/top-nav/nav'
@@ -49,17 +49,17 @@ function RevenuePage() {
     
     const generateReport = () => {
         setGenerateAction(true);
-        if (reportRef.current) {
-            //reportRef.current.focus();
-            reportRef.current.scrollIntoView({
-                behavior: "smooth",
-                block: "nearest",
-                inline: "start"
-            });
-
-          }        
-          //console.log("startingDate : ", startingDate, " endingDate : ", endingDate)
-    }
+      };
+      
+      useEffect(() => {
+        if (generateAction && reportRef.current) {
+          reportRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "start"
+          });
+        }
+      }, [generateAction]);
 
         
 

@@ -7,10 +7,13 @@
     /*border-color: #464544; border: 3px solid; border-radius: 5px;*/
     justify-content: center;
     align-items: center;
+    align-self: center;
 }
 
+
+
 .reportDateRef {
-    padding-top: 102px;
+    padding-top: 190px;
 
 }
 
