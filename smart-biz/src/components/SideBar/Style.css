@@ -1,0 +1,37 @@
+.logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo.collapsed {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .logo p {
+    margin-right: 5px;
+  }
+  
+  .logo img {
+    float: left;
+    position: relative;
+    max-width: 30px;
+    max-height: 30px;
+  }
+
+  
+  .menu-item{
+    display: grid;
+    grid-template-columns: 50px 50px;
+    grid-template-rows: 50px;
+    align-items: first baseline;
+  }
+
+  .menu-item img{
+    max-width: 30px;
+    max-height: 30px;
+  }
+
+  .menu-item p{
+    height: 10px;
+  }

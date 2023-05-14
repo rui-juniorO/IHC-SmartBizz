@@ -3,6 +3,7 @@ import BottomGrid from '../../components/Grid/BottomGrid';
 import TopGrid from '../../components/Grid/TopGrid';
 import TopNav from '../../components/top-nav/nav'
 import Report from '../../components/Report/Report'
+import SideBar from '../../components/SideBar/SideBar';
 import '../../components/Grid/Grid.css'
 import './Style.css'
 
@@ -11,6 +12,8 @@ function RevenuePage() {
     const [enableReport, setenableReport] = useState(false);
     const [dateMsg, setdateMsg] = useState(true);
     const [generateAction, setGenerateAction] = useState(false);
+    const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
 
     const reportRef = useRef(null);
     
@@ -65,34 +68,42 @@ function RevenuePage() {
 
     return   (
 
-            <div> 
-                <TopNav></TopNav> 
-                <TopGrid></TopGrid>
-                {
-                    dateMsg ? 
-                    <div className='msgbox'>
-                        <p>Select a beggining and ending date 
-                        to generate the report
-                        </p>
-                    </div>
-                    : null
-                }
-                
-                <BottomGrid 
-                EndingDate={setEndingDate}
-                StartingDate={setStartingDate}
-                generationTrigger={generateReport}
-                ></BottomGrid>
 
-               
+        <div style={{ position: 'relative' }}>
+            <div style={{ display: 'flex' }}>
+                <div
+                    style={{
+                    width: sidebarCollapsed ? '0' : '100px',
+                    marginRight: sidebarCollapsed ? '0' : '10px',
+                    transition: 'width 0.3s ease-in-out, margin-right 0.3s ease-in-out',
+                    }}
+                >
+                    <SideBar />
+                </div>
+          <div style={{ flex: 1 }}>
+            <TopGrid></TopGrid>
+                <TopNav></TopNav>
                 {
-                    generateAction ?
-                    <div ref={reportRef}><Report ></Report> </div>
-                    
-                    : null
-                }
-
+            dateMsg ?
+              <div className='msgbox'>
+                <p>Select a beginning and ending date to generate the report</p>
+              </div>
+              : null
+          }
+          <BottomGrid
+            EndingDate={setEndingDate}
+            StartingDate={setStartingDate}
+            generationTrigger={generateReport}
+          ></BottomGrid>
+          {
+            generateAction ?
+              <div ref={reportRef}><Report ></Report> </div>
+              : null
+          }
+        </div>
             </div>
+      
+        </div>
             );
 };
 
