@@ -16,7 +16,9 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
 import LogIn_form from "./scenes/login/login";
-import RevenuePage from "./scenes/invoices";
+//import RevenuePage from "./scenes/invoices";
+import RevenuePage from './pages/RevenueReport/RevenuePage'
+import EmployeePayroll from './pages/EmployeesPayroll/EmployeePayroll'
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -35,7 +37,8 @@ function App() {
               <Route path="/team" element={<Team />} />
               <Route path="/login" element={<LogIn_form />} />
               <Route path="/contacts" element={<Contacts />} />
-              <Route path="/revenuePage" element={<RevenuePage />} />
+              <Route path="/Revenue" element={<RevenuePage />} />
+              <Route path="/Payroll" element={<EmployeePayroll />} />
               <Route path="/form" element={<Form />} />
               <Route path="/bar" element={<Bar />} />
               <Route path="/pie" element={<Pie />} />
