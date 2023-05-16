@@ -1,0 +1,33 @@
+.reportBody{
+    display: flexbox;
+    width: max-content;
+    padding-bottom: 120px;
+    height: 300px;
+    margin-left: 34%;
+    /*border-color: #464544; border: 3px solid; border-radius: 5px;*/
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+
+
+.reportDateRef {
+    padding-top: 90px;
+    width: 600px;
+
+}
+
+.reportInfoBody{
+    border-color: #464544; border: 3px solid; border-radius: 5px;
+    margin: 10px; padding: 10px;
+    color: black;
+
+}
+
+
+.reportInfoGrid {
+    display: grid;
+    grid-template-columns: 100px 100px; column-gap: 390px;
+}
+

@@ -1,0 +1,22 @@
+.back {
+    position: relative;
+    height: 100vh;
+    /* width: 100vw; */
+    background-image: linear-gradient(to right top, #06662b, #135c26, #185322, #1b491e, #1c401b, #1c401a, #1b401a, #1b4019, #1a491a, #18531c, #145c1d, #0b661f);   
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+
+.card {
+  margin: auto;
+  
+}
+.card-img{
+  border-left: #1c401a;
+}
+  
+  
+  
