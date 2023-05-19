@@ -5,7 +5,7 @@ import './Table.scss'
 import './Style.css'
 import SortSelector from './SortSelector'
 import employees from './Emps.json'
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 
 const EmployeePayroll = () => {
 
@@ -18,6 +18,9 @@ const EmployeePayroll = () => {
     const [regularHours, setRegularHours] = useState(false);
     const [extraHours, setExtraHours] = useState(false);
 
+    const collumnsStates = [
+        contractDate, incomeTaxes, socialSecurity, regularHours, extraHours
+    ]
 
     const [selectAll, setSelectAll] = useState(false);
 
@@ -38,12 +41,6 @@ const EmployeePayroll = () => {
     const [selectedDept, setDept] = useState("all");
 
     const [sortOpt, setSort] =  useState("Liquid Salary");
-
-    const depts = 
-            [
-            "Sales", "IT", "Marketing",
-            "Human Resourcers", "Logistics", "Directory"       
-            ]
 
     //Sort methods
     const sortByGs = () => {
@@ -177,15 +174,26 @@ const EmployeePayroll = () => {
                     total ++;
                 }
             }
-            deptId = "Employees in "+ dept+" ";
+            deptId = "Employees in "+ dept+" : ";
         }
 
         return deptId + total;
     };
 
-    
+    const tableTitle = (dept) => {
 
+        let title = ""
 
+        if(dept == "all"){
+            title = "Payroll deduction of employees from every department ";
+        }
+        else {
+            title = "Payroll deduction of employees from the "+ dept+" department";
+        }
+
+        return   <h4>{title}</h4>   ;
+
+    }
 
     return (
 
@@ -212,6 +220,7 @@ const EmployeePayroll = () => {
                             {tableGenerator &&
 
                             <div className='tableContainer'>
+                                {tableGenerator && tableTitle(selectedDept)}
                                 <div className='tableScroll'>
                                     <div className='tableSpot'>
                                                         <table className='responstable'>
