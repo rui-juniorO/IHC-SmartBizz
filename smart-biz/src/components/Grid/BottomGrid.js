@@ -45,14 +45,24 @@ function BottomGrid(props) {
 
     const startDateMsg = () => {
         if(startDate != ""){
-            return "From "+ startDate;
+            return (
+                <div>
+                    <h4>From {startDate}</h4>
+                </div>
+                //"From "+ startDate
+                );
         }
         else return null;
     }
 
     const endDateMsg = () => {
         if(endDate != ""){
-            return " to "+ endDate;
+            return (
+                <div>
+                    <h4> to {endDate}</h4>
+                </div>
+                //"From "+ startDate
+                );
         }
         else return null;
     }
@@ -92,7 +102,7 @@ function BottomGrid(props) {
                         
 
                         {
-                            generateDateInInfo ?
+                            (generateDateInInfo && startDate != "" && endDate != "") ?
                             <ReportPeriodRef startRef={startDate} endRef={endDate}></ReportPeriodRef>
                             : null
                         }

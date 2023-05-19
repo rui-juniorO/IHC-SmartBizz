@@ -2,6 +2,7 @@ body {
     overflow-x: auto;
     overflow-y: auto;
     color: black;
+    height: 1500px;
 }
 
 .dateLabelGrid {

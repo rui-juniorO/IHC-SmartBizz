@@ -9,7 +9,6 @@ function RevenuePage() {
     const [enableReport, setenableReport] = useState(false);
     const [dateMsg, setdateMsg] = useState(true);
     const [generateAction, setGenerateAction] = useState(false);
-    const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
 
     const reportRef = useRef(null);
@@ -83,7 +82,7 @@ function RevenuePage() {
           ></BottomGrid>
           {
             generateAction ?
-              <div ref={reportRef}><Report ></Report> </div>
+              <div ref={reportRef}><Report startDate={startingDate}></Report> </div>
               : null
           }
         </div>

@@ -1,37 +1,61 @@
 import './Style.css'
 import './Table.scss'
 import React from 'react';
+
+
+
 const Report = React.forwardRef((props, ref) => {
 
 
     const data = [
         {
-        Product: "Cama Box Casal",
-        Invoicing : 768.90, 
-        Revenue: 668.90,
-        TotalOfSales: 13 ,
-        Taxes : 11 ,
-        Devolutions : 3
+          Product: "Soundbar",
+          Category: "Sound equipments",
+          Revenue: 3142,
+          TotalOfSales: 100,
+          Taxes: 10,
+          Devolutions: 5,
+          Commission:2,
         },
-
         {
-            Product: "Mesa de jantar (4 pessoas)",
-            Invoicing : 749.00, 
-            Revenue: 623.00,
-            TotalOfSales : 21,
-            Taxes : 10,
-            Devolutions :2 
+          Product: "Laptop",
+          Category: "Eletronics",
+          Revenue: 8300,
+          TotalOfSales: 50,
+          Taxes: 15,
+          Devolutions: 2,
+          Commission:4,
         },
-
         {
-            Product: "Sanita Polo Branco (Aquecida)",
-            Invoicing : 51.00, 
-            Revenue: 41.00,
-            TotalOfSales : 30 ,
-            Taxes : 9,
-            Devolutions : 0 
-        }
-    ];
+          Product: "TV",
+          Category: "Eletronics",
+          Revenue: 15000,
+          TotalOfSales: 80,
+          Taxes: 8,
+          Devolutions: 3,
+          Commission:3,
+        },
+        
+        {
+          Product: "Headphone",
+          Category: "Sound equipments",
+          Revenue: 6000.32,
+          TotalOfSales: 120,
+          Taxes: 5,
+          Devolutions: 8,
+          Commission:1,
+        },
+        {
+          Product: "Gaming Console",
+          Category: "Eletronics",
+          Invoicing: 8000,
+          Revenue: 2500,
+          TotalOfSales: 40,
+          Taxes: 12,
+          Devolutions: 1,
+          Commission:5,
+        },
+      ];
 
     const sumRevenue = () => {
         let total = 0.0, i = 0;
@@ -52,28 +76,49 @@ const Report = React.forwardRef((props, ref) => {
         }
         return total;
     }
+    const taxes = () => {
+        let total = 0.0, i = 0;
+        while( i < data.length){
+            
+            total = total + data[i].Taxes/100*data[i].Revenue ;
+            i++;
+        }
+        return total;
+    }
+    const commissions = () => {
+        let total = 0.0, i = 0;
+        while( i < data.length){
+            
+            total = total + data[i].Commission/100*data[i].Revenue ;
+            i++;
+        }
+        return total;
+    }
+    
 
     return (
         <div className='reportBody' ref={ref}>
              
             <div className='reportInfoBody'>
-                <h4>Total Revenue : {sumRevenue()} $<p>  </p>  
+                <h4>Total Revenue : {sumRevenue()} €<p>  </p>  
                 Total Units sold : {sumOfUnits()} units<p>  </p>  
-                Overall taxes deduction : 110 $<p>  </p>
-                Comissions Deduction :  140 $
+                Overall taxes deduction : {taxes()} €<p>  </p>
+                Comissions Deduction :  {commissions()} €
                 </h4>
             </div>
+            
 
            <div className='tableBody'>
                 <table class="responstable">
                                 <thead style={{paddingBottom: '100px'}}>
                                     <tr>
                                         <th>Product</th>
-                                        <th>Invoicing</th>
+                                        <th>Category</th>
                                         <th>Revenue</th>
                                         <th>Total Of Sales</th>
                                         <th>Taxes</th>
                                         <th>Devolutions</th>
+                                        <th>Comission fees</th>
                                     </tr>
                                 </thead>
                                     
@@ -85,11 +130,12 @@ const Report = React.forwardRef((props, ref) => {
                                             item=>(
                                                 <tr key={item}>
                                                     <td>{item.Product}</td>
-                                                    <td>{item.Invoicing} $</td>
-                                                    <td>{item.Revenue} $</td>
+                                                    <td>{item.Category} </td>
+                                                    <td>{item.Revenue} €</td>
                                                     <td>{item.TotalOfSales} units</td>
                                                     <td>{item.Taxes} %</td>
                                                     <td>{item.Devolutions} units</td>
+                                                    <td>{item.Commission} %</td>
                                                 </tr>
                                             )
                                         )
@@ -100,8 +146,7 @@ const Report = React.forwardRef((props, ref) => {
                             </table>
            </div>
             
-            
-
+           
         </div>
     );
 });

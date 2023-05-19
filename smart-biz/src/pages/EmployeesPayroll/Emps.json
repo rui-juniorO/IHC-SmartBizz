@@ -116,7 +116,72 @@
         "Regular Hours of work": 163,
         "Extra Hours of work": 8,
         "Department": "Marketing"
+      },
+
+      {
+        "ID": 11,
+        "Name": "Paulo Kogos",
+        "Gross Salary": 3000,
+        "Liquid Salary": 2800,
+        "Contract Date": "08-11-2022",
+        "Income Taxes Deduciton": 12,
+        "Social Security": 11,
+        "Regular Hours of work": 178,
+        "Extra Hours of work": 8,
+        "Department": "Directory"
+      },
+
+      {
+        "ID": 12,
+        "Name": "Athur Daniel",
+        "Gross Salary": 1500,
+        "Liquid Salary": 1000,
+        "Contract Date": "12-12-2011",
+        "Income Taxes Deduciton": 8,
+        "Social Security": 5,
+        "Regular Hours of work": 110,
+        "Extra Hours of work": 3,
+        "Department": "Directory"
+      },
+      {
+        "ID": 13,
+        "Name": "John Smith",
+        "Gross Salary": 2000,
+        "Liquid Salary": 1500,
+        "Contract Date": "01-01-2022",
+        "Income Taxes Deduciton": 10,
+        "Social Security": 8,
+        "Regular Hours of work": 120,
+        "Extra Hours of work": 5,
+        "Department": "Logistics"
+      },
+      {
+        "ID": 14,
+        "Name": "Emily Johnson",
+        "Gross Salary": 1800,
+        "Liquid Salary": 1400,
+        "Contract Date": "05-06-2019",
+        "Income Taxes Deduciton": 7,
+        "Social Security": 5,
+        "Regular Hours of work": 100,
+        "Extra Hours of work": 2,
+        "Department": "Logistics"
+      },
+      {
+        "ID": 15,
+        "Name": "Miguel Silva",
+        "Gross Salary": 2500,
+        "Liquid Salary": 2000,
+        "Contract Date": "15-03-2022",
+        "Income Taxes Deduciton": 15,
+        "Social Security": 10,
+        "Regular Hours of work": 120,
+        "Extra Hours of work": 5,
+        "Department": "Sales"
       }
+      
+      
+      
       
     ]
 }

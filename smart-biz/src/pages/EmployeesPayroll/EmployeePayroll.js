@@ -39,6 +39,12 @@ const EmployeePayroll = () => {
 
     const [sortOpt, setSort] =  useState("Liquid Salary");
 
+    const depts = 
+            [
+            "Sales", "IT", "Marketing",
+            "Human Resourcers", "Logistics", "Directory"       
+            ]
+
     //Sort methods
     const sortByGs = () => {
         emps.sort(function(a,b){
@@ -152,15 +158,34 @@ const EmployeePayroll = () => {
     };
 
     const getDeptMembers = (dept) => {
+        
         let total = 0 ;
-        for(let i = 0; i < emps.length; i++){
-            if(emps[i]['Department'] == dept){
-                total ++;
+
+        let deptId = "";
+
+        if(dept == "all"){
+            for(let i = 0; i < emps.length; i++){
+                total++;
             }
+            deptId = "Total of Employees : "
         }
 
-        return total;
+
+        else{
+            for(let i = 0; i < emps.length; i++){
+                if(emps[i]['Department'] == dept){
+                    total ++;
+                }
+            }
+            deptId = "Employees in "+ dept+" ";
+        }
+
+        return deptId + total;
     };
+
+    
+
+
 
     return (
 
@@ -178,92 +203,90 @@ const EmployeePayroll = () => {
                         <br></br>
                         <h3>Employees by Department</h3>
                         <div className='deptGrid'>
-                            <h4>Sales : {getDeptMembers("Sales")}</h4>
-                            <h4>IT : {getDeptMembers("IT")}</h4>
-                            <h4>Marketing : {getDeptMembers("Marketing")}</h4>
-                            <h4>Human Resources : {getDeptMembers("Human Resources")}</h4>
-                            <h4>Logistics : {getDeptMembers("Logistics")}</h4>
-                            <h4>Directory : {getDeptMembers("Directory")}</h4>
+                            <h4>{getDeptMembers(selectedDept)}</h4>
                         </div>
 
                             
                             <br></br>
                             <br></br>
+                            {tableGenerator &&
 
-                            <div className='tableSpot'>
-                                {tableGenerator &&
-                                (
-                                    <table className='responstable'>
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Department</th>
-                                            <th>Gross Salary</th>
-                                            <th>Liquid Salary</th>
-                                            { contractDate && <th>Contract Date</th>}
-                                            { incomeTaxes && <th>Income Taxes Deduction</th>}
-                                            { socialSecurity && <th>Social Security</th>}
-                                            { regularHours&& <th>Regular Hours of Work</th>}
-                                            { extraHours&& <th>Extra Hours of Work</th>}
-                                        </tr>
-                                    </thead>
-
-
-                                    <tbody>
-
-                        {
-                            emps.map((emp, idx) => {
-                                {
-                                    if(selectedDept == null || selectedDept == "all"){
-                                        return (
-                                            <tr key={idx}>
-                                            <td>{emp['ID']}</td>
-                                            <td>{emp['Name']}</td>
-                                            <td>{emp['Department']}</td>
-                                            <td>{emp['Gross Salary']} $</td>
-                                            <td>{emp['Liquid Salary']} $</td>
-                                            { contractDate && <td>{emp['Contract Date']}</td>}
-                                            { incomeTaxes && <td>{emp['Income Taxes Deduciton']} %</td>}
-                                            { socialSecurity && <td>{emp['Social Security']} $</td>}
-                                            { regularHours&& <td>{emp['Regular Hours of work']} hours</td>}
-                                            { extraHours&& <td>{emp['Extra Hours of work']} hours</td>}
-                                        </tr>
+                            <div className='tableContainer'>
+                                <div className='tableScroll'>
+                                    <div className='tableSpot'>
+                                                        <table className='responstable'>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Name</th>
+                                                                <th>Department</th>
+                                                                <th>Gross Salary</th>
+                                                                <th>Liquid Salary</th>
+                                                                { contractDate && <th>Contract Date</th>}
+                                                                { incomeTaxes && <th>Income Taxes Deduction</th>}
+                                                                { socialSecurity && <th>Social Security</th>}
+                                                                { regularHours&& <th>Regular Hours of Work</th>}
+                                                                { extraHours&& <th>Extra Hours of Work</th>}
+                                                            </tr>
+                                                        </thead>
 
 
-                                                );
-                                    }
-                                    else if (emp['Department'] == selectedDept){
-                                        return (
-                                            <tr key={idx}>
-                                                <td>{emp['ID']}</td>
-                                                <td>{emp['Name']}</td>
-                                                <td>{emp['Department']}</td>
-                                                <td>{emp['Gross Salary']} $</td>
-                                                <td>{emp['Liquid Salary']} $</td>
-                                                { contractDate && <td>{emp['Contract Date']}</td>}
-                                                { incomeTaxes && <td>{emp['Income Taxes Deduciton']} %</td>}
-                                                { socialSecurity && <td>{emp['Social Security']} $</td>}
-                                                { regularHours&& <td>{emp['Regular Hours of work']} hours</td>}
-                                                { extraHours&& <td>{emp['Extra Hours of work']} hours</td>}
-                                            </tr>
+                                                        <tbody>
+
+                                            {
+                                                emps.map((emp, idx) => {
+                                                    {
+                                                        if(selectedDept == null || selectedDept == "all"){
+                                                            return (
+                                                                <tr key={idx}>
+                                                                <td>{emp['ID']}</td>
+                                                                <td>{emp['Name']}</td>
+                                                                <td>{emp['Department']}</td>
+                                                                <td>{emp['Gross Salary']} $</td>
+                                                                <td>{emp['Liquid Salary']} $</td>
+                                                                { contractDate && <td>{emp['Contract Date']}</td>}
+                                                                { incomeTaxes && <td>{emp['Income Taxes Deduciton']} %</td>}
+                                                                { socialSecurity && <td>{emp['Social Security']} $</td>}
+                                                                { regularHours&& <td>{emp['Regular Hours of work']} hours</td>}
+                                                                { extraHours&& <td>{emp['Extra Hours of work']} hours</td>}
+                                                            </tr>
 
 
-                                        );
-                                    }
-                                    else {return null;}
-                                }
-                                            
-                            }               
-                                                            )
-                                        
-                        }
-                                        
-                                    </tbody>
-                                </table>
-                                )
-                            }
+                                                                    );
+                                                        }
+                                                        else if (emp['Department'] == selectedDept){
+                                                            return (
+                                                                <tr key={idx}>
+                                                                    <td>{emp['ID']}</td>
+                                                                    <td>{emp['Name']}</td>
+                                                                    <td>{emp['Department']}</td>
+                                                                    <td>{emp['Gross Salary']} $</td>
+                                                                    <td>{emp['Liquid Salary']} $</td>
+                                                                    { contractDate && <td>{emp['Contract Date']}</td>}
+                                                                    { incomeTaxes && <td>{emp['Income Taxes Deduciton']} %</td>}
+                                                                    { socialSecurity && <td>{emp['Social Security']} $</td>}
+                                                                    { regularHours&& <td>{emp['Regular Hours of work']} hours</td>}
+                                                                    { extraHours&& <td>{emp['Extra Hours of work']} hours</td>}
+                                                                </tr>
+
+
+                                                            );
+                                                        }
+                                                        else {return null;}
+                                                    }
+                                                                
+                                                }               
+                                                                                )
+                                                            
+                                            }
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                </div>
                             </div>
+                                    }
+                           
 
                             
 

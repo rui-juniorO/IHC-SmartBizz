@@ -3,7 +3,7 @@ function ReportPeriodRef (props) {
 
     return (
         <div className='reportDateRef'>
-            <h4>Sales Track between {props.startRef} - {props.endRef}</h4>
+            <h2>Sales Track between {props.startRef} - {props.endRef}</h2>
 
         </div>
 
