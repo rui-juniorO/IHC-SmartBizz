@@ -70,7 +70,8 @@ function BottomGrid(props) {
 
     return (
             
-            <div className='bottomGrid'>
+            <div className='bottomGrid' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                {/* style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}} */}
                 
                 <div>
                     <div className='datePickerGrid'>
@@ -88,17 +89,10 @@ function BottomGrid(props) {
 
                     <div className='btnGrid'>
                         <button className='btn' onClick={handleGenerateAction}>Generate</button>
-                        <button className='btn' onClick={clearLabels}>clear All</button>
+                        <button className='btn' onClick={clearLabels}>clear</button>
                     </div>
                     
                     <div>
-                        
-
-                        {
-                            generateDateInInfo ?
-                            <ExportOpts></ExportOpts>
-                            : null
-                        }
                         
 
                         {

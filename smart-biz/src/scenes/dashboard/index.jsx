@@ -21,7 +21,7 @@ const Dashboard = () => {
     <Box m="20px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="MN Retail" subtitle="Welcome to your Company dashboard" />
+        <Header title= "MN Retail" subtitle= "Welcome to MN Retail's Dashboard" />
 
         
       </Box>
@@ -192,7 +192,7 @@ const Dashboard = () => {
           backgroundColor={colors.primary[400]}
           p="30px"
         >
-          <Typography variant="h5" fontWeight="600">
+          <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
             Campaign
           </Typography>
           <Box
@@ -221,6 +221,7 @@ const Dashboard = () => {
             variant="h5"
             fontWeight="600"
             sx={{ padding: "30px 30px 0 30px" }}
+            color={colors.grey[100]}
           >
             Sales Quantity
           </Typography>
@@ -238,6 +239,7 @@ const Dashboard = () => {
             variant="h5"
             fontWeight="600"
             sx={{ marginBottom: "15px" }}
+            color={colors.grey[100]}
           >
             Geography Based Sales
           </Typography>

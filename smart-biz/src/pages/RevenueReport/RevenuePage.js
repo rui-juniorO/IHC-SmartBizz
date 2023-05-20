@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
+import { Box } from "@mui/material";
+import Header from "../../components/Header";
 import BottomGrid from '../../components/Grid/BottomGrid';
 import Report from '../../components/Report/Report'
 import '../../components/Grid/Grid.css'
@@ -64,25 +66,35 @@ function RevenuePage() {
 
     return   (
 
+      
+
 
         <div style={{ position: 'relative' }}>
-                
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Header  title= "Reports" subtitle= "Generate a revenue report between selected dates" />        
+        </Box>     
           <div style={{ flex: 1 }}>
                 {
             dateMsg ?
-              <div className='msgbox'>
-                <p>Select a beginning and ending date to generate the report</p>
+              <div className='msgbox'style={{ backgroundColor: '#1f2a40', justifyContent: 'center', alignItems: 'center' }} >
+                <p>Select a beginning and ending dates in to generate the report</p>
               </div>
               : null
           }
+          
           <BottomGrid
+          
             EndingDate={setEndingDate}
             StartingDate={setStartingDate}
             generationTrigger={generateReport}
           ></BottomGrid>
           {
             generateAction ?
-              <div ref={reportRef}><Report startDate={startingDate}></Report> </div>
+              <div ref={reportRef}>
+                <Report startDate={startingDate}></Report>
+                
+              
+              </div>
               : null
           }
         </div>

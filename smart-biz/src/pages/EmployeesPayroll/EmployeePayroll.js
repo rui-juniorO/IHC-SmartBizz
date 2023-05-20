@@ -1,5 +1,7 @@
 import Selector from './Selector'
 import ExportOpts from '../../components/Exportation/ExportOpts'
+import { Box } from "@mui/material";
+import Header from "../../components/Header";
 
 import './Table.scss'
 import './Style.css'
@@ -197,7 +199,10 @@ const EmployeePayroll = () => {
 
     return (
 
-        <div style={{ position: 'relative' }}> 
+        <div style={{ position: 'relative' }}>
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Header style={{ flex: 1 }} title= "Payroll" subtitle= "Here you can manage the employees payroll" />        
+            </Box>
             <div style={{ display: 'flex' }}>
                
                 <div style={{ flex: 1 }}>
