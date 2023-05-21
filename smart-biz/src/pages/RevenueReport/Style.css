@@ -1,8 +1,15 @@
-body {
-    overflow-x: auto;
-    overflow-y: auto;
+body{
+    overflow: auto;
+    width: 100%;
+    height: 900px;
+}
+
+.pageContainer {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;    
+
     color: black;
-    height: 1500px;
 }
 
 .dateLabelGrid {

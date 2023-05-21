@@ -69,15 +69,16 @@ function RevenuePage() {
       
 
 
-        <div style={{ position: 'relative' }}>
+        <div className='pageContainer' style={{ position: 'relative' }}>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Header  title= "Reports" subtitle= "Generate a revenue report between selected dates" />        
         </Box>     
-          <div style={{ flex: 1 }}>
+          <div >
                 {
             dateMsg ?
               <div className='msgbox'style={{ backgroundColor: '#1f2a40', justifyContent: 'center', alignItems: 'center' }} >
-                <p>Select a beginning and ending dates in to generate the report</p>
+                <p>Select a beginning and ending dates in order to generate the report</p>
+                
               </div>
               : null
           }
