@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import FullCalendar, { formatDate } from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -11,6 +11,12 @@ import {
   ListItemText,
   Typography,
   useTheme,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
 } from "@mui/material";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
@@ -19,31 +25,61 @@ const Calendar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [currentEvents, setCurrentEvents] = useState([]);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [dialogTitle, setDialogTitle] = useState("");
+  const [dialogEvent, setDialogEvent] = useState(null);
 
-  const handleDateClick = (selected) => {
-    const title = prompt("Please enter a new title for your event");
-    const calendarApi = selected.view.calendar;
-    calendarApi.unselect();
+  const handleConfirmDialog = () => {
+    if (dialogTitle.trim() !== "") {
+      const calendarApi = dialogEvent.view.calendar;
+      calendarApi.unselect();
 
-    if (title) {
-      calendarApi.addEvent({
-        id: `${selected.dateStr}-${title}`,
-        title,
-        start: selected.startStr,
-        end: selected.endStr,
-        allDay: selected.allDay,
-      });
+      if (dialogEvent.event) {
+        // Update existing event
+        dialogEvent.event.setProp("title", dialogTitle);
+      } else {
+        // Create new event
+        calendarApi.addEvent({
+          id: `${dialogEvent.dateStr}-${dialogTitle}`,
+          title: dialogTitle,
+          start: dialogEvent.startStr,
+          end: dialogEvent.endStr,
+          allDay: dialogEvent.allDay,
+        });
+      }
+
+      setDialogTitle(""); // Clear the dialog title
+      setOpenDialog(false); // Close the dialog
     }
   };
 
-  const handleEventClick = (selected) => {
+  const handleDeleteEvent = () => {
     if (
       window.confirm(
-        `Are you sure you want to delete the event '${selected.event.title}'`
+        `Are you sure you want to delete the event '${dialogEvent.event.title}'`
       )
     ) {
-      selected.event.remove();
+      dialogEvent.event.remove();
+      setDialogTitle(""); // Clear the dialog title
+      setOpenDialog(false); // Close the dialog
     }
+  };
+
+  const handleCloseDialog = () => {
+    setDialogTitle(""); // Clear the dialog title
+    setOpenDialog(false); // Close the dialog
+  };
+
+  const handleDateClick = (selected) => {
+    setDialogTitle(selected.dateStr);
+    setDialogEvent(selected);
+    setOpenDialog(true);
+  };
+
+  const handleEventClick = (selected) => {
+    setDialogTitle(selected.event.title);
+    setDialogEvent(selected);
+    setOpenDialog(true);
   };
 
   return (
@@ -81,6 +117,15 @@ const Calendar = () => {
                     </Typography>
                   }
                 />
+               <Button
+                  variant="outlined"
+                  size="small"
+                  color="primary"
+                  onClick={() => handleEventClick({ event: event })}
+                  >
+                  Edit
+              </Button>
+
               </ListItem>
             ))}
           </List>
@@ -124,6 +169,31 @@ const Calendar = () => {
           />
         </Box>
       </Box>
+
+      <Dialog open={openDialog} onClose={handleCloseDialog} PaperProps={{ style: { backgroundColor: '#ffffff' } }}>
+        <DialogTitle style={{ color: '#000000' }}>{dialogTitle}</DialogTitle>
+          <DialogContent style={{ color: '#000000' }}>
+            <h4>Enter a title for your event</h4>
+          <TextField
+            label="Title"
+            value={dialogTitle}
+            onChange={(e) => setDialogTitle(e.target.value)}
+            fullWidth
+            margin="normal"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleConfirmDialog} color="primary">
+            Confirm
+          </Button>
+          {dialogEvent?.event && (
+            <Button onClick={handleDeleteEvent} color="error">
+              Delete
+            </Button>
+          )}
+          <Button onClick={handleCloseDialog}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };
