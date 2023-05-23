@@ -175,11 +175,12 @@ const Calendar = () => {
           <DialogContent style={{ color: '#000000' }}>
             <h4>Enter a title for your event</h4>
           <TextField
-            label="Title"
+            label="Event Title"
             value={dialogTitle}
             onChange={(e) => setDialogTitle(e.target.value)}
             fullWidth
             margin="normal"
+            
           />
         </DialogContent>
         <DialogActions>

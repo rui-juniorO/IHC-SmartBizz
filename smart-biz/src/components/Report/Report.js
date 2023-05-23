@@ -185,11 +185,7 @@ const Report = React.forwardRef((props, ref) => {
                                     o desempenho e maximizar a lucratividade. Serão analisadas as categorias de produtos, incluindo Equipamentos de
                                     Som e Eletrônicos, com foco na receita, vendas, devoluções, impostos, comissões e receita líquida.</p>
                                 <h3>1. Receita Total por Categoria:</h3>
-                                <p>A análise revela que a categoria de Equipamentos de Som gerou uma receita total de €9,142.32, enquanto a
-                                    categoria de Eletrônicos registrou uma receita total de €25,800. Observa-se que a categoria de Eletrônicos
-                                    representa a maior parte da receita, correspondendo a aproximadamente 73% do total. Essa informação sugere que
-                                    há uma demanda significativa por produtos eletrônicos, o que representa uma boa oportunidade de negócio para a
-                                    empresa.</p>
+                                
                                     <Box
                                         gridColumn="span 4"
                                         gridRow="span 2"
@@ -207,6 +203,18 @@ const Report = React.forwardRef((props, ref) => {
                                             <BarChart isDashboard={true} />
                                         </Box>
                                         </Box>
+
+                                        {Array.from(categoryInfo()).map(([key, value]) => (
+                                    <div key={key}>
+
+                                        <ul>
+                                            <li><strong>{key}:</strong> A categoria  gerou uma receita de {value.revenue}</li>
+                                            
+                                        </ul>
+                                    
+                                    
+                                    </div>
+                                ))}
                                 <h3>2. Total de Vendas por Categoria:</h3>
                                 <p>Embora a categoria de Eletrônicos seja responsável pela maior receita, é interessante observar que a categoria de
                                     Equipamentos de Som registrou um número maior de vendas, totalizando 220 unidades vendidas. Por outro lado, a
