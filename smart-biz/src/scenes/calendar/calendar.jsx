@@ -26,6 +26,7 @@ const Calendar = () => {
   const colors = tokens(theme.palette.mode);
   const [currentEvents, setCurrentEvents] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
+  const [confirmDeleteDialogOpen, setConfirmDeleteDialogOpen] = useState(false);
   const [dialogTitle, setDialogTitle] = useState("");
   const [dialogEvent, setDialogEvent] = useState(null);
 
@@ -54,20 +55,22 @@ const Calendar = () => {
   };
 
   const handleDeleteEvent = () => {
-    if (
-      window.confirm(
-        `Are you sure you want to delete the event '${dialogEvent.event.title}'`
-      )
-    ) {
+    setConfirmDeleteDialogOpen(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (dialogEvent.event) {
       dialogEvent.event.remove();
-      setDialogTitle(""); // Clear the dialog title
-      setOpenDialog(false); // Close the dialog
     }
+    setDialogTitle(""); // Clear the dialog title
+    setOpenDialog(false); // Close the dialog
+    setConfirmDeleteDialogOpen(false); // Close the confirm delete dialog
   };
 
   const handleCloseDialog = () => {
     setDialogTitle(""); // Clear the dialog title
     setOpenDialog(false); // Close the dialog
+    setConfirmDeleteDialogOpen(false); // Close the confirm delete dialog
   };
 
   const handleDateClick = (selected) => {
@@ -117,15 +120,14 @@ const Calendar = () => {
                     </Typography>
                   }
                 />
-               <Button
+                <Button
                   variant="outlined"
                   size="small"
                   color="primary"
                   onClick={() => handleEventClick({ event: event })}
-                  >
+                >
                   Edit
-              </Button>
-
+                </Button>
               </ListItem>
             ))}
           </List>
@@ -170,21 +172,21 @@ const Calendar = () => {
         </Box>
       </Box>
 
-      <Dialog open={openDialog} onClose={handleCloseDialog} PaperProps={{ style: { backgroundColor: '#ffffff' } }}>
-        <DialogTitle style={{ color: '#000000' }}>{dialogTitle}</DialogTitle>
-          <DialogContent style={{ color: '#000000' }}>
-            <h4>Enter a title for your event</h4>
+      <Dialog open={openDialog} onClose={handleCloseDialog}>
+        <DialogTitle>{dialogTitle}</DialogTitle>
+        <DialogContent>
+          <h4>Enter a title for your event</h4>
           <TextField
             label="Event Title"
             value={dialogTitle}
             onChange={(e) => setDialogTitle(e.target.value)}
             fullWidth
+            autoFocus
             margin="normal"
-            
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleConfirmDialog} color="primary">
+          <Button onClick={handleConfirmDialog} color="success">
             Confirm
           </Button>
           {dialogEvent?.event && (
@@ -192,7 +194,32 @@ const Calendar = () => {
               Delete
             </Button>
           )}
-          <Button onClick={handleCloseDialog}>Cancel</Button>
+          <Button onClick={handleCloseDialog} color="success">
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={confirmDeleteDialogOpen}
+        onClose={() => setConfirmDeleteDialogOpen(false)}
+      >
+        <DialogTitle>Confirm Delete</DialogTitle>
+        <DialogContent>
+          <Typography variant="body1">
+            Are you sure you want to delete the  event?
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleConfirmDelete} color="error">
+            Delete
+          </Button>
+          <Button
+            onClick={() => setConfirmDeleteDialogOpen(false)}
+            color="success"
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </Box>
