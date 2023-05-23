@@ -3,14 +3,14 @@ import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
 import { salesData as dadosVendas } from "../data/mockData";
 
-const BarChart = ({ isDashboard = false }) => {
+const BarChart_sales = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
  
 
   const dadosVendasComTotal = dadosVendas.map((item) => ({
     ...item,
-    total: item.price * item.TotalOfSales,
+    total: item.TotalOfSales,
   }));
 
   const categories = dadosVendasComTotal.map((item) => item.Category);
@@ -127,4 +127,4 @@ const BarChart = ({ isDashboard = false }) => {
     />
   );
 };
-export default BarChart;
+export default BarChart_sales;

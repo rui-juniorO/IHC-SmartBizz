@@ -40,3 +40,6 @@
     overflow-y: scroll;
   }
   
+  .reportText{
+    border-color: #464544; border: 3px solid; border-radius: 5px;
+  }

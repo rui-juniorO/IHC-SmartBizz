@@ -223,7 +223,7 @@ const Dashboard = () => {
             sx={{ padding: "30px 30px 0 30px" }}
             color={colors.grey[100]}
           >
-            Sales Quantity
+            Total Sales
           </Typography>
           <Box height="250px" mt="-20px">
             <BarChart isDashboard={true} />
