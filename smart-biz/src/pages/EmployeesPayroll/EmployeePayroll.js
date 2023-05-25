@@ -236,9 +236,9 @@ const EmployeePayroll = () => {
                                                                 <th>Department</th>
                                                                 <th>Gross Salary</th>
                                                                 <th>Liquid Salary</th>
+                                                                { socialSecurity && <th>Social Security</th>}
                                                                 { contractDate && <th>Contract Date</th>}
                                                                 { incomeTaxes && <th>Income Taxes Deduction</th>}
-                                                                { socialSecurity && <th>Social Security</th>}
                                                                 { regularHours&& <th>Regular Hours of Work</th>}
                                                                 { extraHours&& <th>Extra Hours of Work</th>}
                                                             </tr>
@@ -258,9 +258,9 @@ const EmployeePayroll = () => {
                                                                 <td>{emp['Department']}</td>
                                                                 <td>{emp['Gross Salary']} $</td>
                                                                 <td>{emp['Liquid Salary']} $</td>
+                                                                { socialSecurity && <td>{emp['Social Security']} $</td>}
                                                                 { contractDate && <td>{emp['Contract Date']}</td>}
                                                                 { incomeTaxes && <td>{emp['Income Taxes Deduciton']} %</td>}
-                                                                { socialSecurity && <td>{emp['Social Security']} $</td>}
                                                                 { regularHours&& <td>{emp['Regular Hours of work']} hours</td>}
                                                                 { extraHours&& <td>{emp['Extra Hours of work']} hours</td>}
                                                             </tr>
