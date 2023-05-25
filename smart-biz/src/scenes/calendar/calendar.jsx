@@ -92,18 +92,18 @@ const Calendar = () => {
       <Box display="flex" justifyContent="space-between">
         {/* CALENDAR SIDEBAR */}
         <Box
-          flex="1 1 20%"
-          backgroundColor={colors.primary[400]}
+          flex="20% 1 1"
+          backgroundColor="fcf9f9"
           p="15px"
           borderRadius="4px"
         >
-          <Typography variant="h5">Events</Typography>
+          <Typography variant="h3" color="#1F2A40">Events</Typography>
           <List>
             {currentEvents.map((event) => (
               <ListItem
                 key={event.id}
                 sx={{
-                  backgroundColor: colors.greenAccent[500],
+                  backgroundColor: "#2596BE",
                   margin: "10px 0",
                   borderRadius: "2px",
                 }}
