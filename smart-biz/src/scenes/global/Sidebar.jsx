@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
+import './Style.css';
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -46,10 +47,11 @@ const Sidebar = () => {
   const [selected, setSelected] = useState("Dashboard");
 
   return (
-    <Box
+    <Box 
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
+          position: 'fixed'
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -59,9 +61,9 @@ const Sidebar = () => {
         },
         "& .pro-inner-item:hover": {
           color: "#868dfb !important",
+          position: 'fixed'
         },
         "& .pro-menu-item.active": {
-          color: "#6870fa !important",
         },
       }}
     >

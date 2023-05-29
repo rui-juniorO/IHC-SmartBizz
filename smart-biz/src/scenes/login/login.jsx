@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function LogIn_form() {
   return (
     <div className="container" style={{marginTop: '5%'}}>
-      <div className="card">
+      <div className="card" >
         <div className="row">
           <div className="col-md-6">
             <img src={smartbizLogo} className="card-img" alt="SmartBiz Logo" />

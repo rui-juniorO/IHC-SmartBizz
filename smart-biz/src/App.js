@@ -30,7 +30,10 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          {location.pathname !== '/login' && <Sidebar isSidebar={isSidebar} />}
+          {location.pathname !== '/login' && <Sidebar               sx={{
+                  position: "fixed",
+                }}
+                isSidebar={isSidebar} />}
           <main className="content">
             <Routes>
               <Route path="/" element={<Dashboard />} />
